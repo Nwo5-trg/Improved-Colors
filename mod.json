@@ -1,0 +1,30 @@
+{
+	"geode": "4.4.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "nwo5.improved_colors",
+	"name": "Improved Colors",
+	"version": "v1.0.0",
+	"developer": "Nwo5",
+	"description": "",
+	"resources": {"sprites": ["resources/*.png"]},
+	"tags": ["editor", "interface", "enhancement", "utility"],
+	"settings": {
+		"dont-use-bigger-palette": {
+			"type": "bool",
+			"name": "Dont Use Bigger Palette",
+			"description": "use that same sized palette for edit object color select as color trigger",
+			"default": false
+		},
+		"paste-button-under-inputs": {
+			"type": "bool",
+			"name": "Paste Button Under Inputs",
+			"description": "position paste buttons in hex calculator below their respective inputs",
+			"default": false
+		}
+	}
+}
