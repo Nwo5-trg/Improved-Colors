@@ -110,23 +110,25 @@ void HexCalculatorPopup::calculate(bool mode) {
     if (!validateHex(hex1) || !validateHex(hex2)) return;
     auto col1 = *cc3bFromHexString(hex1).ok();
     auto col2 = *cc3bFromHexString(hex2).ok();
-    auto outputCol = mode 
-        ? ccc3(col1.r + col2.r, col1.g + col2.g, col1.b + col2.b) 
-        : ccc3(col1.r - col2.r, col1.g - col2.g, col1.b - col2.b);
+    auto outputCol = mode
+    ? ccc3((col1.r + col2.r) / 2, (col1.g + col2.g) / 2, (col1.b + col2.b) / 2)
+    : ccc3(clampInt(col1.r - col2.r), clampInt(col1.g - col2.g), clampInt(col1.b - col2.b));
     m_colorOutput->setString(cc3bToHexString(outputCol));
 }
 
 void HexCalculatorPopup::reverseCalculate(bool mode) {
     auto hex1 = m_colorOutput->getString();
     auto hex2 = m_colorInput1->getString();
-    if (!validateHex(hex1) || !validateHex(hex2))  return;
+    if (!validateHex(hex1) || !validateHex(hex2)) return;
     auto col1 = *cc3bFromHexString(hex1).ok();
     auto col2 = *cc3bFromHexString(hex2).ok();
     auto outputCol = mode 
-        ? ccc3(col1.r - col2.r, col1.g - col2.g, col1.b - col2.b) 
-        : ccc3(col2.r - col1.r, col2.g - col1.g, col2.b - col1.b);
+    ? ccc3(clampInt((col1.r * 2) - col2.r),clampInt((col1.g * 2) - col2.g),clampInt((col1.b * 2) - col2.b))
+    : ccc3(clampInt(col1.r - col2.r), clampInt(col1.g - col2.g), clampInt(col1.b - col2.b));
     m_colorInput2->setString(cc3bToHexString(outputCol));
 }
+
+
 
 void HexCalculatorPopup::onOperatorToggle(CCObject* sender) {
     calculate(!m_operatorToggler->m_toggled);
