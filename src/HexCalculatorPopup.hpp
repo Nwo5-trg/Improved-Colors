@@ -18,6 +18,7 @@ private:
     void onPaste(cocos2d::CCObject* sender);
     void onCopy(cocos2d::CCObject* sender);
     void onClear(cocos2d::CCObject* sender);
+    void onClose(CCObject* sender) override;
 
 public:
     static HexCalculatorPopup* create();

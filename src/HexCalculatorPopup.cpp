@@ -17,6 +17,8 @@ HexCalculatorPopup* HexCalculatorPopup::create() {
 bool HexCalculatorPopup::setup() {
     this->setTitle("Hex Calculator");
 
+    m_buttonMenu->setTouchPriority(-1000);
+
     auto operatorToggler = CCMenuItemToggler::create(CCSprite::create("minusoperatorbutton.png"_spr), 
     CCSprite::create("plusoperatorbutton.png"_spr), this, menu_selector(HexCalculatorPopup::onOperatorToggle));
     operatorToggler->toggle(true);
@@ -114,6 +116,7 @@ void HexCalculatorPopup::calculate(bool mode) {
     ? ccc3((col1.r + col2.r) / 2, (col1.g + col2.g) / 2, (col1.b + col2.b) / 2)
     : ccc3(clampInt(col1.r - col2.r), clampInt(col1.g - col2.g), clampInt(col1.b - col2.b));
     m_colorOutput->setString(cc3bToHexString(outputCol));
+    updateColorDisplays();
 }
 
 void HexCalculatorPopup::reverseCalculate(bool mode) {
@@ -123,9 +126,10 @@ void HexCalculatorPopup::reverseCalculate(bool mode) {
     auto col1 = *cc3bFromHexString(hex1).ok();
     auto col2 = *cc3bFromHexString(hex2).ok();
     auto outputCol = mode 
-    ? ccc3(clampInt((col1.r * 2) - col2.r),clampInt((col1.g * 2) - col2.g),clampInt((col1.b * 2) - col2.b))
+    ? ccc3(clampInt((col1.r * 2) - col2.r), clampInt((col1.g * 2) - col2.g), clampInt((col1.b * 2) - col2.b))
     : ccc3(clampInt(col1.r - col2.r), clampInt(col1.g - col2.g), clampInt(col1.b - col2.b));
     m_colorInput2->setString(cc3bToHexString(outputCol));
+    updateColorDisplays();
 }
 
 
@@ -150,4 +154,11 @@ void HexCalculatorPopup::onCopy(CCObject* sender) {
 
 void HexCalculatorPopup::onClear(CCObject* sender) {
     for (auto input : {m_colorInput1, m_colorInput2, m_colorOutput}) input->setString("", true);
+}
+
+void HexCalculatorPopup::onClose(CCObject* sender) { // textinput crash fix
+    m_colorInput1->getInputNode()->onClickTrackNode(false);
+    m_colorInput2->getInputNode()->onClickTrackNode(false);
+    m_colorOutput->getInputNode()->onClickTrackNode(false);
+    Popup::onClose(sender);
 }

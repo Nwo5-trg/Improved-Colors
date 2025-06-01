@@ -16,3 +16,17 @@ int clampInt(int num) {
     if (num > 255) return 255;
     return num;
 }
+
+void removeBetterColorPickerToggle(CCMenu* menu) { // this mods a bitch icl
+    CCMenuItemToggler* lastToggler = nullptr;
+    for (auto node : CCArrayExt<CCNode*>(menu->getChildren())) {
+        if (auto toggler = typeinfo_cast<CCMenuItemToggler*>(node)) lastToggler = toggler;
+        if (auto label = typeinfo_cast<CCLabelBMFont*>(node)) {
+            if (std::string(label->getString()) == "Better Picker") {
+                label->setVisible(false);
+                if (lastToggler) lastToggler->setVisible(false); // paranoid
+                return;
+            }
+        }
+    }
+}
