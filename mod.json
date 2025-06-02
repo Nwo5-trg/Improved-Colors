@@ -14,6 +14,21 @@
 	"resources": {"sprites": ["resources/*.png"]},
 	"tags": ["editor", "interface", "enhancement", "utility"],
 	"settings": {
+		"enable-copy-paste-hex": {
+			"type": "bool",
+			"name": "Enable Copy Paste Hex",
+			"default": true
+		},
+		"enable-palette": {
+			"type": "bool",
+			"name": "Enable Palette",
+			"default": true
+		},
+		"enable-hex-calculator": {
+			"type": "bool",
+			"name": "Enable Hex Calculator",
+			"default": true
+		},
 		"dont-use-bigger-palette": {
 			"type": "bool",
 			"name": "Dont Use Bigger Palette",
