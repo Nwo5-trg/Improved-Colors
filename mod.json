@@ -25,6 +25,12 @@
 			"name": "Paste Button Under Inputs",
 			"description": "position paste buttons in hex calculator below their respective inputs",
 			"default": false
+		},
+		"swap-copy-paste-buttons": {
+			"type": "bool",
+			"name": "Swap Copy Paste Buttons",
+			"description": "swap copy paste buttons in color select",
+			"default": false
 		}
 	}
 }

@@ -57,16 +57,20 @@ class $modify(ColorPopup, ColorSelectPopup) {
         }
 
         auto copyButton = CCMenuItemSpriteExtra::create(CCSprite::createWithSpriteFrameName("GJ_copyBtn_001.png"), this, menu_selector(ColorPopup::onCopyHex));
-        copyButton->setPosition(-113.0f, 135.0f);
+        if (mod->getSettingValue<bool>("swap-copy-paste-buttons")) copyButton->setPosition(-195.0f, 135.0f);
+        else copyButton->setPosition(-113.0f, 135.0f);
         copyButton->setScale(0.3f);
         copyButton->m_baseScale = 0.3f;
         m_buttonMenu->addChild(copyButton);
+        m_fields->copyButton = copyButton;
 
         auto pasteButton = CCMenuItemSpriteExtra::create(CCSprite::createWithSpriteFrameName("GJ_pasteBtn_001.png"), this, menu_selector(ColorPopup::onPasteHex));
-        pasteButton->setPosition(-195.0f, 135.0f);
+        if (mod->getSettingValue<bool>("swap-copy-paste-buttons")) pasteButton->setPosition(-113.0f, 135.0f);
+        else pasteButton->setPosition(-195.0f, 135.0f);
         pasteButton->setScale(0.3f);
         pasteButton->m_baseScale = 0.3f;
         m_buttonMenu->addChild(pasteButton);
+        m_fields->pasteButton = pasteButton;
 
         if (m_hsvWidget->isVisible()) {
             hexCalculateButton->setVisible(false);
@@ -143,16 +147,20 @@ class $modify(PulsePopup, SetupPulsePopup) {
         
         // fuck refactoring thats for bitches
         auto copyButton = CCMenuItemSpriteExtra::create(CCSprite::createWithSpriteFrameName("GJ_copyBtn_001.png"), this, menu_selector(PulsePopup::onCopyHex));
-        copyButton->setPosition(-111.0f, 122.0f);
+        if (mod->getSettingValue<bool>("swap-copy-paste-buttons")) copyButton->setPosition(-130.0f, 122.0f);
+        else copyButton->setPosition(-111.0f, 122.0f);
         copyButton->setScale(0.3f);
         copyButton->m_baseScale = 0.3f;
         m_buttonMenu->addChild(copyButton);
+        m_fields->copyButton = copyButton;
 
         auto pasteButton = CCMenuItemSpriteExtra::create(CCSprite::createWithSpriteFrameName("GJ_pasteBtn_001.png"), this, menu_selector(PulsePopup::onPasteHex));
-        pasteButton->setPosition(-130.0f, 122.0f);
+        if (mod->getSettingValue<bool>("swap-copy-paste-buttons")) pasteButton->setPosition(-111.0f, 122.0f);
+        else pasteButton->setPosition(-130.0f, 122.0f);
         pasteButton->setScale(0.3f);
         pasteButton->m_baseScale = 0.3f;
         m_buttonMenu->addChild(pasteButton);
+        m_fields->pasteButton = pasteButton;
 
         if (m_hsvWidget->isVisible()) {
             hexCalculateButton->setVisible(false);
