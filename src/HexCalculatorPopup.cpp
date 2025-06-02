@@ -125,9 +125,9 @@ void HexCalculatorPopup::reverseCalculate(bool mode) {
     if (!validateHex(hex1) || !validateHex(hex2)) return;
     auto col1 = *cc3bFromHexString(hex1).ok();
     auto col2 = *cc3bFromHexString(hex2).ok();
-    auto outputCol = mode 
-    ? ccc3(clampInt((col1.r * 2) - col2.r), clampInt((col1.g * 2) - col2.g), clampInt((col1.b * 2) - col2.b))
-    : ccc3(clampInt(col1.r - col2.r), clampInt(col1.g - col2.g), clampInt(col1.b - col2.b));
+    auto outputCol = mode
+    ? ccc3(clampInt(col1.r * 2 - col2.r), clampInt(col1.g * 2 - col2.g), clampInt(col1.b * 2 - col2.b))
+    : ccc3(clampInt(col2.r + col1.r), clampInt(col2.g + col1.g), clampInt(col2.b + col1.b));
     m_colorInput2->setString(cc3bToHexString(outputCol));
     updateColorDisplays();
 }
