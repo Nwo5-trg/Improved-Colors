@@ -19,6 +19,7 @@ class $modify(ColorPopup, ColorSelectPopup) {
         CCMenuItemSpriteExtra* hexCalculateButton;
         CCMenuItemSpriteExtra* copyButton;
         CCMenuItemSpriteExtra* pasteButton;
+        bool betterColorPicker = Loader::get()->isModLoaded("anatom3000.bettercolorpicker");
     };
     
     static void onModify(auto& self) { // better color picker
@@ -56,8 +57,8 @@ class $modify(ColorPopup, ColorSelectPopup) {
                 this->addChild(palette);
                 m_fields->palette = palette;
             }
-            
-            if (Loader::get()->isModLoaded("anatom3000.bettercolorpicker")) removeBetterColorPickerToggle(m_buttonMenu); // safe prolly
+
+            if (m_fields->betterColorPicker) removeBetterColorPickerToggle(m_buttonMenu);
         }
 
         if (mod->getSettingValue<bool>("enable-copy-paste-hex")) {
@@ -96,7 +97,10 @@ class $modify(ColorPopup, ColorSelectPopup) {
         ColorSelectPopup::onToggleHSVMode(sender);
         if (!m_hsvWidget->isVisible()) {
             if (auto hexCalculateButton = m_fields->hexCalculateButton) hexCalculateButton->setVisible(true);
-            if (auto palette = m_fields->palette) palette->setVisible(true);
+            if (auto palette = m_fields->palette) {
+                palette->setVisible(true);
+                if (m_fields->betterColorPicker) removeBetterColorPickerToggle(m_buttonMenu);
+            }
             if (auto copyButton = m_fields->copyButton) copyButton->setVisible(true);
             if (auto pasteButton = m_fields->pasteButton) pasteButton->setVisible(true);
         } else {
@@ -127,6 +131,7 @@ class $modify(PulsePopup, SetupPulsePopup) {
         CCMenuItemSpriteExtra* hexCalculateButton;
         CCMenuItemSpriteExtra* copyButton;
         CCMenuItemSpriteExtra* pasteButton;
+        bool betterColorPicker = Loader::get()->isModLoaded("anatom3000.bettercolorpicker");
     };
 
     static void onModify(auto& self) {
@@ -191,7 +196,10 @@ class $modify(PulsePopup, SetupPulsePopup) {
         SetupPulsePopup::onSelectPulseMode(sender);
         if (!m_hsvWidget->isVisible()) {
             if (auto hexCalculateButton = m_fields->hexCalculateButton) hexCalculateButton->setVisible(true);
-            if (auto palette = m_fields->palette) palette->setVisible(true);
+            if (auto palette = m_fields->palette) {
+                palette->setVisible(true);
+                if (m_fields->betterColorPicker) removeBetterColorPickerToggle(m_buttonMenu);
+            }
             if (auto copyButton = m_fields->copyButton) copyButton->setVisible(true);
             if (auto pasteButton = m_fields->pasteButton) pasteButton->setVisible(true);
         } else {
