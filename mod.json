@@ -10,7 +10,7 @@
 	"name": "Improved Colors",
 	"version": "v1.0.0",
 	"developer": "Nwo5",
-	"description": "",
+	"description": "Adds a few utils to color select screens.",
 	"resources": {"sprites": ["resources/*.png"]},
 	"links": {"source": "https://github.com/Nwo5-trg/Improved-Colors/tree/v1.0.0"},
 	"tags": ["editor", "interface", "enhancement", "utility"],
