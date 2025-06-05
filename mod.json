@@ -1,5 +1,5 @@
 {
-	"geode": "4.4.0",
+	"geode": "4.5.0",
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
@@ -8,11 +8,11 @@
 	},
 	"id": "nwo5.improved_colors",
 	"name": "Improved Colors",
-	"version": "v1.0.3",
+	"version": "v1.0.4",
 	"developer": "Nwo5",
 	"description": "Adds a few utils to color select screens.",
 	"resources": {"sprites": ["resources/*.png"]},
-	"links": {"source": "https://github.com/Nwo5-trg/Improved-Colors/tree/v1.0.0"},
+	"links": {"source": "https://github.com/Nwo5-trg/Improved-Colors"},
 	"tags": ["editor", "interface", "enhancement", "utility"],
 	"settings": {
 		"enable-copy-paste-hex": {
