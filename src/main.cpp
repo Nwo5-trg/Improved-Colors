@@ -38,7 +38,7 @@ class $modify(ColorPopup, ColorSelectPopup) {
             m_fields->hexCalculateButton = hexCalculateButton;
         }
         
-        if (mod->getSettingValue<bool>("enable-palette")) {
+        if (mod->getSettingValue<bool>("enable-palette") && !Loader::get()->isModLoaded("spaghettdev.named-editor-groups")) {
             if (p0 || p1) {
                 auto palette = ColorPalette::create(0, CCSize(240.0f, 60.0f));
                 palette->setPosition(315.0f, 142.0f);
@@ -150,7 +150,7 @@ class $modify(PulsePopup, SetupPulsePopup) {
             m_fields->hexCalculateButton = hexCalculateButton;
         }
 
-        if (mod->getSettingValue<bool>("enable-palette")) {
+        if (mod->getSettingValue<bool>("enable-palette") && !Loader::get()->isModLoaded("spaghettdev.named-editor-groups")) {
             auto palette = ColorPalette::create(1, CCSize(240.0f, 60.0f));
             palette->setPosition(309.0f, 177.0f);
             palette->setScale(0.575f);

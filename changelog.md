@@ -1,3 +1,7 @@
+# v1.0.3
+- **Added** "fixed" named editor groups incompat (just removed palette, cant test anymore cuz named groups crashes my game without even giving a crashlog and i am *not* forking and fixing that just to add better compatibility)
+
+
 # v1.0.2
 - **Fixed** did not bump the version oops
 
